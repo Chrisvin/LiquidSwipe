@@ -12,8 +12,8 @@ import com.jem.liquidswipe.LiquidSwipeClipPathProvider
 
 class CustomPagerAdapter(private val context: Context) : PagerAdapter() {
 
-    val colorArray: ArrayList<Int> = arrayListOf(Color.BLUE, Color.GREEN, Color.MAGENTA, Color.CYAN, Color.YELLOW, Color.RED)
-    val titleArray: ArrayList<String> = arrayListOf(
+    private val colorArray: ArrayList<Int> = arrayListOf(Color.BLUE, Color.GREEN, Color.MAGENTA, Color.CYAN, Color.YELLOW, Color.RED)
+    private val titleArray: ArrayList<String> = arrayListOf(
         "Page 1",
         "Page 2",
         "Page 3",
@@ -27,19 +27,6 @@ class CustomPagerAdapter(private val context: Context) : PagerAdapter() {
         val layout = inflater.inflate(R.layout.fragment_dummy, container, false);
         layout.findViewById<TextView>(R.id.fragment_textview).text = titleArray[position]
         layout.setBackgroundColor(colorArray[position])
-        (layout as? RevealLayout)?.apply {
-            clipPathProvider = LiquidSwipeClipPathProvider()
-            /*onUpdateListener = object: RevealLayout.OnUpdateListener {
-                override fun onUpdate(percent: Float) {
-                    if (percent == 0f) {
-                        reveal()
-                    } else if (percent == 100f){
-                        hide()
-                    }
-                }
-            }*/
-//            hide()
-        }
         container.addView(layout)
         return layout
     }

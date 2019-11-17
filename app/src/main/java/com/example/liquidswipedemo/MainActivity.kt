@@ -13,15 +13,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         viewpager.adapter = CustomFragmentPagerAdapter(supportFragmentManager)
-        viewpager.setPageTransformer(true, LiquidSwipePageTransformer())
-
-        /*
-        val mScroller = ViewPager::class.java.getDeclaredField("mScroller")
-        mScroller.isAccessible = true
-        val scroller = FixedSpeedScroller(this, DecelerateInterpolator())
-        // scroller.setFixedDuration(5000)
-        mScroller.set(viewpager, scroller)
-        */
 
         viewpager.addOnPageChangeListener(object: ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) {
