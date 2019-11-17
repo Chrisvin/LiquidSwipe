@@ -2,10 +2,7 @@ package com.example.liquidswipedemo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.animation.AccelerateDecelerateInterpolator
-import android.view.animation.DecelerateInterpolator
 import androidx.viewpager.widget.ViewPager
-import com.jem.liquidswipe.FixedSpeedScroller
 import com.jem.liquidswipe.LiquidSwipePageTransformer
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -15,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        viewpager.adapter = DummyPagerAdapter(supportFragmentManager)
+        viewpager.adapter = CustomFragmentPagerAdapter(supportFragmentManager)
         viewpager.setPageTransformer(true, LiquidSwipePageTransformer())
 
         /*
