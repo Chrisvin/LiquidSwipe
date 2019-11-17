@@ -37,11 +37,18 @@ class DummyFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_dummy, container, false).apply {
             setBackgroundColor(param1 ?: Color.RED)
-            findViewById<TextView>(R.id.fragment_textview).text = param3 ?: "Hello fello developer!"
-            findViewById<LottieAnimationView>(R.id.lottieAnimationView).setAnimation(param2 ?: R.raw.mountain)
-            findViewById<LottieAnimationView>(R.id.lottieAnimationView).repeatCount = LottieDrawable.INFINITE
-            findViewById<LottieAnimationView>(R.id.lottieAnimationView).repeatMode = LottieDrawable.REVERSE
+
+            findViewById<LottieAnimationView>(R.id.lottieAnimationView).setAnimation(
+                param2 ?: R.raw.mountain
+            )
+            findViewById<LottieAnimationView>(R.id.lottieAnimationView).repeatCount =
+                LottieDrawable.INFINITE
+            findViewById<LottieAnimationView>(R.id.lottieAnimationView).repeatMode =
+                LottieDrawable.REVERSE
             findViewById<LottieAnimationView>(R.id.lottieAnimationView).playAnimation()
+
+            findViewById<TextView>(R.id.fragment_textview).text = param3 ?: "Hello fello developer!"
+
             (this as? RevealLayout)?.clipPathProvider = LiquidSwipeClipPathProvider()
         }
     }

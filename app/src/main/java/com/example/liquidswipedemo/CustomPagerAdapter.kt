@@ -14,16 +14,24 @@ import com.jem.liquidswipe.LiquidSwipeClipPathProvider
 class CustomPagerAdapter(private val context: Context) : PagerAdapter() {
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        val inflater = LayoutInflater.from(context)
-        val layout = inflater.inflate(R.layout.fragment_dummy, container, false);
-        layout.findViewById<TextView>(R.id.fragment_textview).text = titleArray[(position % titleArray.count())]
-        layout.findViewById<LottieAnimationView>(R.id.lottieAnimationView).setAnimation(
-            resourceArray[(position % titleArray.count())])
-        layout.findViewById<LottieAnimationView>(R.id.lottieAnimationView).repeatCount = LottieDrawable.INFINITE
-        layout.findViewById<LottieAnimationView>(R.id.lottieAnimationView).repeatMode = LottieDrawable.REVERSE
-        layout.findViewById<LottieAnimationView>(R.id.lottieAnimationView).playAnimation()
+        val layout = LayoutInflater.from(context).inflate(R.layout.fragment_dummy, container, false)
+
         layout.setBackgroundColor(backgroundColorArray[(position % titleArray.count())])
+
+        layout.findViewById<LottieAnimationView>(R.id.lottieAnimationView).setAnimation(
+            resourceArray[(position % titleArray.count())]
+        )
+        layout.findViewById<LottieAnimationView>(R.id.lottieAnimationView).repeatCount =
+            LottieDrawable.INFINITE
+        layout.findViewById<LottieAnimationView>(R.id.lottieAnimationView).repeatMode =
+            LottieDrawable.REVERSE
+        layout.findViewById<LottieAnimationView>(R.id.lottieAnimationView).playAnimation()
+
+        layout.findViewById<TextView>(R.id.fragment_textview).text =
+            titleArray[(position % titleArray.count())]
+
         (layout as? RevealLayout)?.clipPathProvider = LiquidSwipeClipPathProvider()
+
         container.addView(layout)
         return layout
     }

@@ -13,21 +13,5 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         viewpager.adapter = CustomFragmentPagerAdapter(supportFragmentManager)
-
-        viewpager.addOnPageChangeListener(object: ViewPager.OnPageChangeListener {
-            override fun onPageScrollStateChanged(state: Int) {
-
-            }
-            override fun onPageScrolled(
-                position: Int,
-                positionOffset: Float,
-                positionOffsetPixels: Int
-            ) {
-
-            }
-            override fun onPageSelected(position: Int) {
-
-            }
-        })
     }
 }
