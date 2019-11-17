@@ -1,0 +1,3 @@
+rootProject.name='LiquidSwipeDemo'
+include ':app'
+include ':liquidswipe'
