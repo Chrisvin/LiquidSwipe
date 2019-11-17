@@ -14,13 +14,27 @@ class LiquidSwipeViewPager : ViewPager {
     }
 
     private fun initialize(context: Context, attrs: AttributeSet?) {
+        setPageTransformer(true, LiquidSwipePageTransformer())
+
+        var scrollerDuration = DEFAULT_SCROLLER_DURATION
+        attrs?.let {
+            val typedArray = context.obtainStyledAttributes(it, R.styleable.LiquidSwipeViewPager, 0, 0)
+            typedArray.apply {
+                scrollerDuration = getInt(R.styleable.LiquidSwipeViewPager_scrollerDuration, DEFAULT_SCROLLER_DURATION)
+            }
+        }
+        setDuration(scrollerDuration)
+    }
+
+    public fun setDuration(duration: Int) {
         val mScroller = ViewPager::class.java.getDeclaredField("mScroller")
         mScroller.isAccessible = true
         val scroller = FixedSpeedScroller(context, DecelerateInterpolator())
+        scroller.duration = duration
         mScroller.set(this, scroller)
+    }
 
-        setPageTransformer(true, LiquidSwipePageTransformer())
-
-
+    companion object {
+        private const val DEFAULT_SCROLLER_DURATION = 1000
     }
 }
