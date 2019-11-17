@@ -1,32 +1,29 @@
 package com.example.liquidswipedemo
 
 import android.content.Context
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.viewpager.widget.PagerAdapter
+import com.airbnb.lottie.LottieAnimationView
+import com.airbnb.lottie.LottieDrawable
 import com.jem.easyreveal.RevealLayout
 import com.jem.liquidswipe.LiquidSwipeClipPathProvider
 
 class CustomPagerAdapter(private val context: Context) : PagerAdapter() {
 
-    private val colorArray: ArrayList<Int> = arrayListOf(Color.BLUE, Color.GREEN, Color.MAGENTA, Color.CYAN, Color.YELLOW, Color.RED)
-    private val titleArray: ArrayList<String> = arrayListOf(
-        "Page 1",
-        "Page 2",
-        "Page 3",
-        "Page 4",
-        "Page 5",
-        "Page 6"
-    )
-
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val inflater = LayoutInflater.from(context)
         val layout = inflater.inflate(R.layout.fragment_dummy, container, false);
-        layout.findViewById<TextView>(R.id.fragment_textview).text = titleArray[position]
-        layout.setBackgroundColor(colorArray[position])
+        layout.findViewById<TextView>(R.id.fragment_textview).text = titleArray[(position % titleArray.count())]
+        layout.findViewById<LottieAnimationView>(R.id.lottieAnimationView).setAnimation(
+            resourceArray[(position % titleArray.count())])
+        layout.findViewById<LottieAnimationView>(R.id.lottieAnimationView).repeatCount = LottieDrawable.INFINITE
+        layout.findViewById<LottieAnimationView>(R.id.lottieAnimationView).repeatMode = LottieDrawable.REVERSE
+        layout.findViewById<LottieAnimationView>(R.id.lottieAnimationView).playAnimation()
+        layout.setBackgroundColor(backgroundColorArray[(position % titleArray.count())])
+        (layout as? RevealLayout)?.clipPathProvider = LiquidSwipeClipPathProvider()
         container.addView(layout)
         return layout
     }
@@ -40,6 +37,6 @@ class CustomPagerAdapter(private val context: Context) : PagerAdapter() {
     }
 
     override fun getCount(): Int {
-        return titleArray.count()
+        return titleArray.count() * 20
     }
 }
