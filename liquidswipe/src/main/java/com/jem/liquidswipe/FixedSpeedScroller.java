@@ -8,17 +8,17 @@ public class FixedSpeedScroller extends Scroller {
 
     private int duration = 1000;
 
-    public FixedSpeedScroller(Context context, int duration) {
-        super(context);
-        this.duration = duration;
-    }
-
     public void setDuration(int duration) {
         this.duration = duration;
     }
 
     public FixedSpeedScroller(Context context, Interpolator interpolator) {
         super(context, interpolator);
+    }
+
+    public FixedSpeedScroller(Context context, Interpolator interpolator, int duration) {
+        this(context, interpolator);
+        this.duration = duration;
     }
 
     public FixedSpeedScroller(Context context, Interpolator interpolator, boolean flywheel) {
