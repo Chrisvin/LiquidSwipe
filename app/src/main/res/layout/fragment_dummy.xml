@@ -1,19 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.jem.easyreveal.layouts.EasyRevealFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.jem.easyreveal.layouts.EasyRevealConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#F00"
     tools:context=".DummyFragment">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontalBottomGuideLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.6"
+        android:orientation="horizontal"/>
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:id="@+id/lottieAnimationView"
+        app:lottie_rawRes="@raw/mountain"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/horizontalBottomGuideLine"
+        />
 
     <TextView
         android:gravity="center"
         android:textSize="32sp"
         android:textStyle="bold"
         android:textColor="#FFF"
+        app:layout_constraintVertical_bias="0.3"
+        app:layout_constraintTop_toBottomOf="@id/horizontalBottomGuideLine"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:id="@+id/fragment_textview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/hello_blank_fragment" />
 
-</com.jem.easyreveal.layouts.EasyRevealFrameLayout>
+</com.jem.easyreveal.layouts.EasyRevealConstraintLayout>
