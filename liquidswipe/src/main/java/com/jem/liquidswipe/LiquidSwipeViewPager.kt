@@ -9,6 +9,7 @@ class LiquidSwipeViewPager : ViewPager {
     constructor(context: Context) : super(context) {
         initialize(context, null)
     }
+
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
         initialize(context, attrs)
     }
@@ -18,9 +19,13 @@ class LiquidSwipeViewPager : ViewPager {
 
         var scrollerDuration = DEFAULT_SCROLLER_DURATION
         attrs?.let {
-            val typedArray = context.obtainStyledAttributes(it, R.styleable.LiquidSwipeViewPager, 0, 0)
+            val typedArray =
+                context.obtainStyledAttributes(it, R.styleable.LiquidSwipeViewPager, 0, 0)
             typedArray.apply {
-                scrollerDuration = getInt(R.styleable.LiquidSwipeViewPager_scrollerDuration, DEFAULT_SCROLLER_DURATION)
+                scrollerDuration = getInt(
+                    R.styleable.LiquidSwipeViewPager_scrollerDuration,
+                    DEFAULT_SCROLLER_DURATION
+                )
             }
         }
         setDuration(scrollerDuration)

@@ -17,19 +17,21 @@ class LiquidSwipeClipPathProvider : ClipPathProvider() {
         const val INITIAL_HORIZONTAL_RADIUS = 0f
         const val INITIAL_VERTICAL_RADIUS = 82f
         const val INITIAL_SIDE_WIDTH = 0f
-        fun getMaxHorizontalRadius(view: View) : Float {
+        fun getMaxHorizontalRadius(view: View): Float {
             return view.width.toFloat() * 0.8f
         }
-        fun getMaxVerticalRadius(view: View) : Float {
+
+        fun getMaxVerticalRadius(view: View): Float {
             return view.height.toFloat() * 0.9f
         }
-        fun getInitialWaveCenterY(view: View) : Float {
+
+        fun getInitialWaveCenterY(view: View): Float {
             return view.height.toFloat() * 0.7167487685f
         }
     }
 
     override fun getPath(percent: Float, view: View): Path {
-        waveCenterY = view.height.toFloat()/2
+        waveCenterY = view.height.toFloat() / 2
         waveHorizontalRadius = getWaveHorRadius(1 - (percent / 100), view)
         waveVerticalRadius = getWaveVertRadius(1 - (percent / 100), view)
         sideWidth = getSideWidth(1 - (percent / 100), view)
@@ -132,7 +134,7 @@ class LiquidSwipeClipPathProvider : ClipPathProvider() {
         return path
     }
 
-    private fun getWaveHorRadius(percent: Float, view: View) : Float {
+    private fun getWaveHorRadius(percent: Float, view: View): Float {
         if (percent <= 0) {
             return INITIAL_HORIZONTAL_RADIUS
         }
@@ -141,21 +143,21 @@ class LiquidSwipeClipPathProvider : ClipPathProvider() {
         }
         val p1: Float = 0.4f
         if (percent <= p1) {
-            return INITIAL_HORIZONTAL_RADIUS + percent/p1*(getMaxHorizontalRadius(view) - INITIAL_HORIZONTAL_RADIUS)
+            return INITIAL_HORIZONTAL_RADIUS + percent / p1 * (getMaxHorizontalRadius(view) - INITIAL_HORIZONTAL_RADIUS)
         }
-        val t: Float = ((percent - p1)/(1.0 - p1)).toFloat()
+        val t: Float = ((percent - p1) / (1.0 - p1)).toFloat()
         val A: Float = getMaxHorizontalRadius(view)
         val r: Float = 40f
         val m: Float = 9.8f
-        val beta: Float = r/(2*m)
+        val beta: Float = r / (2 * m)
         val k: Float = 50f
-        val omega0: Float = k/m
+        val omega0: Float = k / m
         val omega: Float = (-beta.pow(2) + omega0.pow(2)).pow(0.5f)
 
-        return A * exp(-beta * t) * cos( omega * t)
+        return A * exp(-beta * t) * cos(omega * t)
     }
 
-    private fun getWaveHorRadiusBack(percent: Float, view: View) : Float {
+    private fun getWaveHorRadiusBack(percent: Float, view: View): Float {
         if (percent <= 0) {
             return INITIAL_HORIZONTAL_RADIUS
         }
@@ -164,21 +166,21 @@ class LiquidSwipeClipPathProvider : ClipPathProvider() {
         }
         val p1: Float = 0.4f
         if (percent <= p1) {
-            return INITIAL_HORIZONTAL_RADIUS + percent/p1*INITIAL_HORIZONTAL_RADIUS
+            return INITIAL_HORIZONTAL_RADIUS + percent / p1 * INITIAL_HORIZONTAL_RADIUS
         }
-        val t: Float = ((percent - p1)/(1.0 - p1)).toFloat()
+        val t: Float = ((percent - p1) / (1.0 - p1)).toFloat()
         val A: Float = 2 * INITIAL_HORIZONTAL_RADIUS
         val r: Float = 40f
         val m: Float = 9.8f
-        val beta: Float = r/(2*m)
+        val beta: Float = r / (2 * m)
         val k: Float = 50f
-        val omega0: Float = k/m
+        val omega0: Float = k / m
         val omega: Float = (-beta.pow(2) + omega0.pow(2)).pow(0.5f)
 
-        return A * exp(-beta * t) * cos( omega * t)
+        return A * exp(-beta * t) * cos(omega * t)
     }
 
-    private fun getWaveVertRadius(percent: Float, view: View) : Float {
+    private fun getWaveVertRadius(percent: Float, view: View): Float {
         val p1: Float = 0.4f
         if (percent <= 0) {
             return INITIAL_VERTICAL_RADIUS
@@ -186,10 +188,10 @@ class LiquidSwipeClipPathProvider : ClipPathProvider() {
         if (percent >= p1) {
             return getMaxVerticalRadius(view)
         }
-        return INITIAL_VERTICAL_RADIUS + (getMaxVerticalRadius(view) - INITIAL_VERTICAL_RADIUS) * percent/p1
+        return INITIAL_VERTICAL_RADIUS + (getMaxVerticalRadius(view) - INITIAL_VERTICAL_RADIUS) * percent / p1
     }
 
-    private fun getSideWidth(percent: Float, view: View) : Float {
+    private fun getSideWidth(percent: Float, view: View): Float {
         val p1: Float = 0.2f
         val p2: Float = 0.8f
         if (percent <= p1) {
@@ -198,6 +200,6 @@ class LiquidSwipeClipPathProvider : ClipPathProvider() {
         if (percent >= p2) {
             return view.width.toFloat()
         }
-        return INITIAL_SIDE_WIDTH + (view.width - INITIAL_SIDE_WIDTH) * ((percent - p1)/(p2 - p1))
+        return INITIAL_SIDE_WIDTH + (view.width - INITIAL_SIDE_WIDTH) * ((percent - p1) / (p2 - p1))
     }
 }

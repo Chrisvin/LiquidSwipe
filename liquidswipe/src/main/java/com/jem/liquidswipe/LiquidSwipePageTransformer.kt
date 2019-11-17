@@ -13,12 +13,12 @@ class LiquidSwipePageTransformer : ViewPager.PageTransformer {
                     page.revealForPercentage(0f, false)
                 }
                 position < 0 -> {
-                    page.translationX = -(page.width*position)
+                    page.translationX = -(page.width * position)
                     page.revealForPercentage(100 - abs(position * 100), false)
                 }
                 position <= 1 -> {
                     page.revealForPercentage(100f, false)
-                    page.translationX = -(page.width*position)
+                    page.translationX = -(page.width * position)
                 }
             }
         }
