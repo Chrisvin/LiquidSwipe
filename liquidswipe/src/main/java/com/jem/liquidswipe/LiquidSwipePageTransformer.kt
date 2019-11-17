@@ -8,19 +8,17 @@ import kotlin.math.abs
 class LiquidSwipePageTransformer : ViewPager.PageTransformer {
     override fun transformPage(page: View, position: Float) {
         if (page is RevealLayout) {
-            val pageWidth = page.width
-            val pageHeight = page.height
             when {
                 position < -1 -> {
                     page.revealForPercentage(0f, false)
                 }
                 position < 0 -> {
-                    page.translationX = -(pageWidth*position)
+                    page.translationX = -(page.width*position)
                     page.revealForPercentage(100 - abs(position * 100), false)
                 }
                 position <= 1 -> {
                     page.revealForPercentage(100f, false)
-                    page.translationX = -(pageWidth*position)
+                    page.translationX = -(page.width*position)
                 }
             }
         }
