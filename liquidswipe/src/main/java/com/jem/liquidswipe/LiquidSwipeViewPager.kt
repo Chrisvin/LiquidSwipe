@@ -9,6 +9,11 @@ import com.jem.liquidswipe.base.LiquidSwipeLayout
 import com.jem.liquidswipe.util.FixedSpeedScroller
 import kotlin.math.abs
 
+/**
+ * `LiquidSwipeViewPager` is a custom [ViewPager] that uses a fixed scroller and uses a [LiquidSwipePageTransformer] as it's page transformer.
+ *
+ * Note: Setting another page transformer to [LiquidSwipeViewPager] would remove the [LiquidSwipePageTransformer].
+ */
 class LiquidSwipeViewPager : ViewPager {
     constructor(context: Context) : super(context) {
         initialize(context, null)
@@ -35,6 +40,10 @@ class LiquidSwipeViewPager : ViewPager {
         setDuration(scrollerDuration)
     }
 
+    /**
+     * Sets the fixed scroller duration for the [LiquidSwipeViewPager].
+     * @param duration Duration taken for viewpager to settle into position.
+     */
     public fun setDuration(duration: Int) {
         val mScroller = ViewPager::class.java.getDeclaredField("mScroller")
         mScroller.isAccessible = true
@@ -43,10 +52,13 @@ class LiquidSwipeViewPager : ViewPager {
         mScroller.set(this, scroller)
     }
 
-    companion object {
+    companion object Constants {
         private const val DEFAULT_SCROLLER_DURATION = 1000
     }
 
+    /**
+     * `LiquidSwipePageTransformer` is a custom [ViewPager.PageTransformer] that is used for LiquidSwipe reveal.
+     */
     class LiquidSwipePageTransformer : ViewPager.PageTransformer {
         override fun transformPage(page: View, position: Float) {
             if (page is LiquidSwipeLayout) {
