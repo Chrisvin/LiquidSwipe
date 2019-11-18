@@ -2,7 +2,7 @@ package com.example.liquidswipedemo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.jem.liquidswipe.LiquidSwipeClipPathProvider
+import com.jem.liquidswipe.clippathprovider.LiquidSwipeClipPathProvider
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

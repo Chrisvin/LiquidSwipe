@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.viewpager.widget.PagerAdapter
 import com.airbnb.lottie.LottieAnimationView
 import com.airbnb.lottie.LottieDrawable
-import com.jem.liquidswipe.LiquidSwipeClipPathProvider
+import com.jem.liquidswipe.clippathprovider.LiquidSwipeClipPathProvider
 import com.jem.liquidswipe.base.LiquidSwipeLayout
 
 class CustomPagerAdapter(private val context: Context, private val liquidSwipeClipPathProviders: Array<LiquidSwipeClipPathProvider>) : PagerAdapter() {

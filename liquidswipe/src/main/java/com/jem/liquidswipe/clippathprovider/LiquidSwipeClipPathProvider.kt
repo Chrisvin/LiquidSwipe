@@ -1,4 +1,4 @@
-package com.jem.liquidswipe
+package com.jem.liquidswipe.clippathprovider
 
 import android.graphics.Path
 import android.view.View

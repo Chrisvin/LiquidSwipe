@@ -3,7 +3,7 @@ package com.jem.liquidswipe.layout
 import android.content.Context
 import android.util.AttributeSet
 import com.jem.easyreveal.layouts.EasyRevealConstraintLayout
-import com.jem.liquidswipe.LiquidSwipeClipPathProvider
+import com.jem.liquidswipe.clippathprovider.LiquidSwipeClipPathProvider
 import com.jem.liquidswipe.base.LiquidSwipeLayout
 
 open class LiquidSwipeConstraintLayout : EasyRevealConstraintLayout,
