@@ -113,6 +113,10 @@ Documentation generated using Dokka : [chrisvin.github.io/LiquidSwipe](https://c
 ## Bugs and Feedback
 For bugs, questions and discussions please use the [Github Issues](https://github.com/Chrisvin/LiquidSwipe/issues).
 
+## Credits
+1. [Cuberto's liquid-swipe for iOS](https://github.com/Cuberto/liquid-swipe) - Source of inspiration
+2. [Alvaro Fabre](https://lottiefiles.com/tomfabre) - Designer of the lottie animations in the demo app
+
 ## License
 ```
 MIT License
