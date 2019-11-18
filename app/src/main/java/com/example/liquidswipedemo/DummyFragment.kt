@@ -2,15 +2,13 @@ package com.example.liquidswipedemo
 
 import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import com.airbnb.lottie.LottieAnimationView
 import com.airbnb.lottie.LottieDrawable
-import com.jem.easyreveal.RevealLayout
-import com.jem.liquidswipe.LiquidSwipeClipPathProvider
 
 private const val ARG_BACKGROUND_COLOR = "param1"
 private const val ARG_RESOURCE = "param2"
@@ -47,9 +45,7 @@ class DummyFragment : Fragment() {
                 LottieDrawable.REVERSE
             findViewById<LottieAnimationView>(R.id.lottieAnimationView).playAnimation()
 
-            findViewById<TextView>(R.id.fragment_textview).text = param3 ?: "Hello fello developer!"
-
-            (this as? RevealLayout)?.clipPathProvider = LiquidSwipeClipPathProvider()
+            findViewById<TextView>(R.id.fragment_textview).text = param3 ?: "Hello fellow developer!"
         }
     }
 
