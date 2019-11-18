@@ -31,7 +31,7 @@ class LiquidSwipeClipPathProvider : ClipPathProvider() {
     }
 
     override fun getPath(percent: Float, view: View): Path {
-        waveCenterY = view.height.toFloat() / 2
+        waveCenterY = if (waveCenterY == 0f) view.height.toFloat() / 2 else waveCenterY
         waveHorizontalRadius = getWaveHorRadius(1 - (percent / 100), view)
         waveVerticalRadius = getWaveVertRadius(1 - (percent / 100), view)
         sideWidth = getSideWidth(1 - (percent / 100), view)
