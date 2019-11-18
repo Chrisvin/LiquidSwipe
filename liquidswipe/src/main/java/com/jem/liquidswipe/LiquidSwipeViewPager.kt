@@ -2,8 +2,11 @@ package com.jem.liquidswipe
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.View
 import android.view.animation.DecelerateInterpolator
 import androidx.viewpager.widget.ViewPager
+import com.jem.easyreveal.RevealLayout
+import kotlin.math.abs
 
 class LiquidSwipeViewPager : ViewPager {
     constructor(context: Context) : super(context) {
@@ -41,5 +44,25 @@ class LiquidSwipeViewPager : ViewPager {
 
     companion object {
         private const val DEFAULT_SCROLLER_DURATION = 1000
+    }
+
+    class LiquidSwipePageTransformer : ViewPager.PageTransformer {
+        override fun transformPage(page: View, position: Float) {
+            if (page is RevealLayout) {
+                when {
+                    position < -1 -> {
+                        page.revealForPercentage(0f, false)
+                    }
+                    position < 0 -> {
+                        page.translationX = -(page.width * position)
+                        page.revealForPercentage(100 - abs(position * 100), false)
+                    }
+                    position <= 1 -> {
+                        page.revealForPercentage(100f, false)
+                        page.translationX = -(page.width * position)
+                    }
+                }
+            }
+        }
     }
 }
