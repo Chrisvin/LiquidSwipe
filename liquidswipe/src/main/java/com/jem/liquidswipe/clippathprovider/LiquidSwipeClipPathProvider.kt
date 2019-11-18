@@ -7,25 +7,33 @@ import kotlin.math.cos
 import kotlin.math.exp
 import kotlin.math.pow
 
+/**
+ * [ClipPathProvider] which provides LiquidSwipe path.
+ */
 class LiquidSwipeClipPathProvider : ClipPathProvider() {
+    /** Center of the wave */
     var waveCenterY: Float = 0f
-    var waveHorizontalRadius: Float = 0f
-    var waveVerticalRadius: Float = 0f
-    var sideWidth: Float = 0f
+    /** Initial horizontal radius of the wave */
+    var initialHorizontalRadius = 0f
+    /** Initial vertical radius of the wave */
+    var initialVerticalRadius = 82f
+    /** Initial revealed side width */
+    var initialSideWidth = 0f
 
-    private companion object Constants {
-        const val INITIAL_HORIZONTAL_RADIUS = 0f
-        const val INITIAL_VERTICAL_RADIUS = 82f
-        const val INITIAL_SIDE_WIDTH = 0f
-        fun getMaxHorizontalRadius(view: View): Float {
+    private var waveHorizontalRadius: Float = 0f
+    private var waveVerticalRadius: Float = 0f
+    private var sideWidth: Float = 0f
+
+    companion object Constants {
+        private fun getMaxHorizontalRadius(view: View): Float {
             return view.width.toFloat() * 0.8f
         }
 
-        fun getMaxVerticalRadius(view: View): Float {
+        private fun getMaxVerticalRadius(view: View): Float {
             return view.height.toFloat() * 0.9f
         }
 
-        fun getInitialWaveCenterY(view: View): Float {
+        private fun getInitialWaveCenterY(view: View): Float {
             return view.height.toFloat() * 0.7167487685f
         }
     }
@@ -136,14 +144,14 @@ class LiquidSwipeClipPathProvider : ClipPathProvider() {
 
     private fun getWaveHorRadius(percent: Float, view: View): Float {
         if (percent <= 0) {
-            return INITIAL_HORIZONTAL_RADIUS
+            return initialHorizontalRadius
         }
         if (percent >= 1) {
             return 0f
         }
         val p1: Float = 0.4f
         if (percent <= p1) {
-            return INITIAL_HORIZONTAL_RADIUS + percent / p1 * (getMaxHorizontalRadius(view) - INITIAL_HORIZONTAL_RADIUS)
+            return initialHorizontalRadius + percent / p1 * (getMaxHorizontalRadius(view) - initialHorizontalRadius)
         }
         val t: Float = ((percent - p1) / (1.0 - p1)).toFloat()
         val A: Float = getMaxHorizontalRadius(view)
@@ -159,17 +167,17 @@ class LiquidSwipeClipPathProvider : ClipPathProvider() {
 
     private fun getWaveHorRadiusBack(percent: Float, view: View): Float {
         if (percent <= 0) {
-            return INITIAL_HORIZONTAL_RADIUS
+            return initialHorizontalRadius
         }
         if (percent >= 1) {
             return 0f
         }
         val p1: Float = 0.4f
         if (percent <= p1) {
-            return INITIAL_HORIZONTAL_RADIUS + percent / p1 * INITIAL_HORIZONTAL_RADIUS
+            return initialHorizontalRadius + percent / p1 * initialHorizontalRadius
         }
         val t: Float = ((percent - p1) / (1.0 - p1)).toFloat()
-        val A: Float = 2 * INITIAL_HORIZONTAL_RADIUS
+        val A: Float = 2 * initialHorizontalRadius
         val r: Float = 40f
         val m: Float = 9.8f
         val beta: Float = r / (2 * m)
@@ -183,23 +191,23 @@ class LiquidSwipeClipPathProvider : ClipPathProvider() {
     private fun getWaveVertRadius(percent: Float, view: View): Float {
         val p1: Float = 0.4f
         if (percent <= 0) {
-            return INITIAL_VERTICAL_RADIUS
+            return initialVerticalRadius
         }
         if (percent >= p1) {
             return getMaxVerticalRadius(view)
         }
-        return INITIAL_VERTICAL_RADIUS + (getMaxVerticalRadius(view) - INITIAL_VERTICAL_RADIUS) * percent / p1
+        return initialVerticalRadius + (getMaxVerticalRadius(view) - initialVerticalRadius) * percent / p1
     }
 
     private fun getSideWidth(percent: Float, view: View): Float {
         val p1: Float = 0.2f
         val p2: Float = 0.8f
         if (percent <= p1) {
-            return INITIAL_SIDE_WIDTH
+            return initialSideWidth
         }
         if (percent >= p2) {
             return view.width.toFloat()
         }
-        return INITIAL_SIDE_WIDTH + (view.width - INITIAL_SIDE_WIDTH) * ((percent - p1) / (p2 - p1))
+        return initialSideWidth + (view.width - initialSideWidth) * ((percent - p1) / (p2 - p1))
     }
 }
