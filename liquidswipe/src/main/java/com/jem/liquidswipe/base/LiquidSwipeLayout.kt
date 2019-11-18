@@ -5,4 +5,4 @@ import com.jem.easyreveal.RevealLayout
 /**
  * Base layout interface for LiquidSwipeLayouts, extends from RevealLayout
  */
-interface LiquidSwipeLayout: RevealLayout
+interface LiquidSwipeLayout : RevealLayout

@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
         // Note that this is not a perfect solution,
         // in fact some artifacts might occur due to the quick waveCenterY value jumps.
-        // But for now, this is the cleanest solution I can think of off.
+        // But for now, this is the cleanest solution I can think of.
         // Anyone else with a better solution is welcome to fork and submit a pull request. :)
 
         // Create 20 times the number of actual pages, and start in the middle.

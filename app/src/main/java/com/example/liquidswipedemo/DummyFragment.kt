@@ -45,7 +45,8 @@ class DummyFragment : Fragment() {
                 LottieDrawable.REVERSE
             findViewById<LottieAnimationView>(R.id.lottieAnimationView).playAnimation()
 
-            findViewById<TextView>(R.id.fragment_textview).text = param3 ?: "Hello fellow developer!"
+            findViewById<TextView>(R.id.fragment_textview).text =
+                param3 ?: "Hello fellow developer!"
         }
     }
 
