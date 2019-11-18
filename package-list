@@ -1,0 +1,7 @@
+$dokka.format:gfm
+$dokka.linkExtension:md
+
+com.jem.liquidswipe
+com.jem.liquidswipe.base
+com.jem.liquidswipe.clippathprovider
+com.jem.liquidswipe.layout
