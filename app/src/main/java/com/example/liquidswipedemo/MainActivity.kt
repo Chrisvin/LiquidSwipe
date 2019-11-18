@@ -17,9 +17,9 @@ class MainActivity : AppCompatActivity() {
         // The following code can be used to dynamically change the waveCenterY
         // based on the touch position (on the LiquidSwipeViewPager).
 
-        // The reason we don't do this internally is because,
+        // The reason this isn't done internally is because,
         // sometimes the viewpager layouts don't get the touch events
-        // when they are consumed directly by the viewpager.
+        // when said touch events are consumed directly by the viewpager.
 
         val liquidSwipeClipPathProviders = Array(titleArray.count()) {
             LiquidSwipeClipPathProvider()
