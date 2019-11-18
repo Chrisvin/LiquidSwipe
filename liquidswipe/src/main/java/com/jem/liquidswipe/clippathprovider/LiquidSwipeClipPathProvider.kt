@@ -2,7 +2,7 @@ package com.jem.liquidswipe.clippathprovider
 
 import android.graphics.Path
 import android.view.View
-import com.jem.easyreveal.ClipPathProvider
+import com.jem.liquidswipe.base.ClipPathProvider
 import kotlin.math.cos
 import kotlin.math.exp
 import kotlin.math.pow
