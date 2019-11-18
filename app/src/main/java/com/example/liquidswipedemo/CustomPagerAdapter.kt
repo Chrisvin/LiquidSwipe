@@ -8,10 +8,10 @@ import android.widget.TextView
 import androidx.viewpager.widget.PagerAdapter
 import com.airbnb.lottie.LottieAnimationView
 import com.airbnb.lottie.LottieDrawable
-import com.jem.easyreveal.RevealLayout
 import com.jem.liquidswipe.LiquidSwipeClipPathProvider
+import com.jem.liquidswipe.base.LiquidSwipeLayout
 
-class CustomPagerAdapter(private val context: Context) : PagerAdapter() {
+class CustomPagerAdapter(private val context: Context, private val liquidSwipeClipPathProviders: Array<LiquidSwipeClipPathProvider>) : PagerAdapter() {
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val layout = LayoutInflater.from(context).inflate(R.layout.fragment_dummy, container, false)
@@ -30,7 +30,7 @@ class CustomPagerAdapter(private val context: Context) : PagerAdapter() {
         layout.findViewById<TextView>(R.id.fragment_textview).text =
             titleArray[(position % titleArray.count())]
 
-        (layout as? RevealLayout)?.clipPathProvider = LiquidSwipeClipPathProvider()
+        (layout as? LiquidSwipeLayout)?.clipPathProvider = liquidSwipeClipPathProviders[(position % titleArray.count())]
 
         container.addView(layout)
         return layout
