@@ -21,13 +21,15 @@ class MainActivity : AppCompatActivity() {
         // sometimes the viewpager layouts don't get the touch events
         // when said touch events are consumed directly by the viewpager.
 
+        // Create an array of LiquidSwipeCPP, one for each layout in the PagerAdapter
         val liquidSwipeClipPathProviders = Array(titleArray.count()) {
             LiquidSwipeClipPathProvider()
         }
 
-        //Similar logic can also be applied for your custom FragmentPagerAdapter
+        // Similar logic can also be applied for your custom FragmentPagerAdapter/FragmentStatePagerAdapter
         viewpager.adapter = CustomPagerAdapter(this, liquidSwipeClipPathProviders)
 
+        // Listen to onTouch events on the viewpager and update the waveCenterY value of the LiquidSwipeCPPs
         viewpager.setOnTouchListener { _, event ->
             val waveCenterY = event.y
             liquidSwipeClipPathProviders.map {
