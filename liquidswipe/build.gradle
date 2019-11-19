@@ -1,6 +1,21 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+
+/* Dokka documentation plugin repositories & dependencies*/
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "org.jetbrains.dokka:dokka-gradle-plugin:0.9.18"
+    }
+}
+
+repositories {
+    maven { url 'https://dl.bintray.com/kotlin/dokka' }
+}
+
 apply plugin: 'org.jetbrains.dokka'
 
 android {
