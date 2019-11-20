@@ -7,7 +7,7 @@
 | :-: | :-: |
 | [Default](#usage) | [Touch Interactive](#touch-interactive---making-the-liquidswipe-wave-center-y-value-match-the-touch-y-value) |
 
-LiquidSwipe is a viewpager library that can be used to make awesome onboarding designs. ([Demo apk](https://github.com/Chrisvin/LiquidSwipe/releases/download/1.0/LiquidSwipeDemo.apk))
+LiquidSwipe is a viewpager library that can be used to make awesome onboarding designs. ([Default Demo apk](https://github.com/Chrisvin/LiquidSwipe/releases/download/1.1/LiquidSwipeDemo.-.Default.apk)) ([TouchInteractive Demo apk](https://github.com/Chrisvin/LiquidSwipe/releases/download/1.1/LiquidSwipeDemo.-.Touch_Interactive.apk))
 
 ## Demo app
 To run the demo project, clone the repository and run it via Android Studio.
@@ -25,7 +25,7 @@ allprojects {
 	}
 }
 ```
-2. Add the EasyReveal dependency in the build.gradle:
+2. Add the LiquidSwipe dependency in the build.gradle:
 ```
 implementation 'com.github.Chrisvin:LiquidSwipe:1.1'
 ```
@@ -68,8 +68,8 @@ Note : [Dokka generated documentation on LiquidSwipeLayouts](https://chrisvin.gi
 
 ## Touch Interactive - Making the LiquidSwipe wave center Y value match the touch Y value
 
-Rather than have the wave center Y value to always be layout.height/2 , it would be more aesthetically pleasing for it to be the same as the touch Y value. 
-The following code can be used to dynamically change the waveCenterY based on the touch position on the LiquidSwipeViewPager.
+Rather than having the wave center Y value always be layout.height/2 , it would be more aesthetically pleasing for it to be the same as the touch Y value. 
+The following code can be used to dynamically change the `waveCenterY` based on the touch position on the `LiquidSwipeViewPager`.
 (The reason this isn't done internally in the library is because the viewpager layouts don't get the touch events when said touch events are consumed directly by the viewpager)
 
 1. In the `Activity`/`Fragment` class containing the `LiquidSwipeViewPager`
@@ -92,7 +92,7 @@ viewpager.setOnTouchListener { _, event ->
     false
 }
 ```
-2. In the `PagerAdapter` set to the `LiquidSwipeViewPager`
+2. In the `PagerAdapter`
 ```kotlin
 // Set the layout's clipPathProvider to the corresponding `LiquidSwipeClipPathProvider`
 (layout as? LiquidSwipeLayout)?.clipPathProvider = liquidSwipeClipPathProviders[position]
@@ -109,9 +109,9 @@ Anyone else with a better solution is welcome to fork and submit a pull request.
 
 ## Creating custom swipe animations
 
-The concept for the `ClipPathProvider` in LiquidSwipe is the same as that in the [EasyReveal library](https://github.com/Chrisvin/EasyReveal) (If you haven't already, then you should really check it out, the first version of LiquidSwipe used [EasyReveal](https://github.com/Chrisvin/EasyReveal) as a dependency).
+The concept for the `ClipPathProvider` in LiquidSwipe is the same as that in the [EasyReveal library](https://github.com/Chrisvin/EasyReveal) (If you haven't already, then you should really check it out, infact the first version of LiquidSwipe used [EasyReveal](https://github.com/Chrisvin/EasyReveal) as a dependency).
 
-You can create your own swipe animation by extending the [ClipPathProvider](https://github.com/Chrisvin/LiquidSwipe/blob/master/liquidswipe/src/main/java/com/jem/liquidswipe/base/ClipPathProvider.kt) and implementing the `getPath()` method. `getPath()` provides the [Path](https://developer.android.com/reference/android/graphics/Path) for a given *percent* value on the provided *view*.  The path gotten from `getPath()` is then used to clip the view using `canvas.clipPath(path, op)` (The `op` value is provided by the `ClipPathProvider` as well).
+You can create your own swipe animation by extending the [ClipPathProvider](https://github.com/Chrisvin/LiquidSwipe/blob/master/liquidswipe/src/main/java/com/jem/liquidswipe/base/ClipPathProvider.kt) and implementing the `getPath()` method. `getPath()` provides the [Path](https://developer.android.com/reference/android/graphics/Path) for a given *percent* value on the provided *view*.  The path gotten from `getPath()` is then used to clip the view using `canvas.clipPath(path, op)` (The `op` value is provided by the `ClipPathProvider` as well). You can then set your custom [ClipPathProvider](https://github.com/Chrisvin/LiquidSwipe/blob/master/liquidswipe/src/main/java/com/jem/liquidswipe/base/ClipPathProvider.kt) to your layouts.
 
 ## API Documentation
 
