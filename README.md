@@ -3,12 +3,9 @@
 
  [![License: MIT](https://img.shields.io/badge/License-MIT-silver.svg)](https://opensource.org/licenses/MIT) [![](https://jitpack.io/v/Chrisvin/LiquidSwipe.svg)](https://jitpack.io/#Chrisvin/LiquidSwipe) [![API](https://img.shields.io/badge/API-21%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=21) 
 
-<table>
-<tr>
-	<td><img src="./demo%20screenshots/LiquidSwipeDemo.gif"/></td>
-	<td><img src="./demo%20screenshots/LiquidSwipeDemo_Touch_Interactive.gif"/></td>
-</tr>
-</table>
+| <img src="./demo%20screenshots/LiquidSwipeDemo.gif"/> | <img src="./demo%20screenshots/LiquidSwipeDemo_Touch_Interactive.gif"/> |
+| :-: | :-: |
+| [Default](#usage) | [Touch Interactive](#touch-interactive---making-the-liquidswipe-wave-center-y-value-match-the-touch-y-value) |
 
 LiquidSwipe is a viewpager library that can be used to make awesome onboarding designs. ([Demo apk](https://github.com/Chrisvin/LiquidSwipe/releases/download/1.0/LiquidSwipeDemo.apk))
 
@@ -71,8 +68,6 @@ Note : [Dokka generated documentation on LiquidSwipeLayouts](https://chrisvin.gi
 
 ## Touch Interactive - Making the LiquidSwipe wave center Y value match the touch Y value
 
-<img src="./demo%20screenshots/LiquidSwipeDemo_Touch_Interactive.gif">
-
 Rather than have the wave center Y value to always be layout.height/2 , it would be more aesthetically pleasing for it to be the same as the touch Y value. 
 The following code can be used to dynamically change the waveCenterY based on the touch position on the LiquidSwipeViewPager.
 (The reason this isn't done internally in the library is because the viewpager layouts don't get the touch events when said touch events are consumed directly by the viewpager)
@@ -109,6 +104,8 @@ The above code has been showcased in the demo app, feel free to look at it for r
 This is not a perfect solution, in fact some artifacts might occur due to the quick waveCenterY value jumps. 
 But for now, this is the cleanest solution I can think of.
 Anyone else with a better solution is welcome to fork and submit a pull request. :)
+
+<img src="./demo%20screenshots/LiquidSwipeDemo_Touch_Interactive.gif"/>
 
 ## Creating custom swipe animations
 
