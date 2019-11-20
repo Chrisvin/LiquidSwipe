@@ -27,7 +27,7 @@ allprojects {
 ```
 2. Add the LiquidSwipe dependency in the build.gradle:
 ```
-implementation 'com.github.Chrisvin:LiquidSwipe:1.2'
+implementation 'com.github.Chrisvin:LiquidSwipe:1.3'
 ```
 
 #### Use `LiquidSwipeViewPager` instead of the normal `ViewPager`
