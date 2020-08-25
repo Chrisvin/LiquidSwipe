@@ -8,6 +8,7 @@
 | [Default](#usage) | [Touch Interactive](#touch-interactive---making-the-liquidswipe-wave-center-y-value-match-the-touch-y-value) |
 
 LiquidSwipe is a viewpager library that can be used to make awesome onboarding designs. ([Default Demo apk](https://github.com/Chrisvin/LiquidSwipe/releases/download/1.1/LiquidSwipeDemo.-.Default.apk)) ([TouchInteractive Demo apk](https://github.com/Chrisvin/LiquidSwipe/releases/download/1.1/LiquidSwipeDemo.-.Touch_Interactive.apk))
+
 If you like this, you'll like [ConcentricOnboarding](https://github.com/Chrisvin/ConcentricOnboarding) as well.
 
 ## Demo app
